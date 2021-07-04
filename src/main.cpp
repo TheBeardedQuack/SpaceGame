@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 
 #include <SFML/Graphics.hpp>
 
@@ -6,6 +7,7 @@
 std::string g_ScreenTitle{"SpaceGame"};
 long g_ScreenWidth = 800;
 long g_ScreenHeight = 600;
+long g_texSunDiameter = 64;
 
 int
 main(
@@ -19,7 +21,16 @@ main(
     //! TODO: Parse command line params
 
     sf::RenderWindow window{sf::VideoMode{g_ScreenWidth, g_ScreenHeight}, g_ScreenTitle};
-    sf::CircleShape sun{100.0f};
+    sf::Texture texSun;
+    sf::Sprite spriteSun;
+
+    if(!texSun.loadFromFile("rsc/images/sun.png", sf::IntRect{0, 0, 256, 256}))
+    {
+        std::cout << "Failed to load resource images/sun.png\n";
+        return -1;
+    }
+
+    spriteSun.setTexture(texSun);
 
     while(window.isOpen())
     {
@@ -38,7 +49,7 @@ main(
         }
 
         window.clear();
-        window.draw(sun);
+        window.draw(spriteSun);
         window.display();
     }
 }
