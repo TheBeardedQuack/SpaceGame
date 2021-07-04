@@ -1,3 +1,5 @@
+#include "SolarSystem.hpp"
+
 #include <string>
 #include <iostream>
 
@@ -5,8 +7,8 @@
 
 
 std::string g_ScreenTitle{"SpaceGame"};
-long g_ScreenWidth = 800;
-long g_ScreenHeight = 600;
+long g_ScreenWidth = 1920;
+long g_ScreenHeight = 1080;
 long g_texSunDiameter = 64;
 
 int
@@ -21,16 +23,16 @@ main(
     //! TODO: Parse command line params
 
     sf::RenderWindow window{sf::VideoMode{g_ScreenWidth, g_ScreenHeight}, g_ScreenTitle};
-    sf::Texture texSun;
-    sf::Sprite spriteSun;
+    SolarSystem solarSystem;
 
-    if(!texSun.loadFromFile("rsc/images/sun.png", sf::IntRect{0, 0, 256, 256}))
     {
-        std::cout << "Failed to load resource images/sun.png\n";
-        return -1;
+        auto view = window.getView();
+        view.setCenter(
+            view.getSize().x / 2,
+            view.getSize().y / 2
+        );
+        window.setView(view);
     }
-
-    spriteSun.setTexture(texSun);
 
     while(window.isOpen())
     {
@@ -41,6 +43,53 @@ main(
             {
                 case sf::Event::Closed:
                     window.close();
+                    break;
+
+                case sf::Event::KeyReleased:
+                {
+                    // No modifier keys
+                    if(event.key.alt || event.key.control || event.key.shift || event.key.system)
+                        break;
+                 
+                    auto view = window.getView();   
+                    switch(event.key.code)
+                    {
+                        case sf::Keyboard::Key::Up:
+                            view.move({0.0f, 10.0f});
+                            window.setView(view);
+                            break;
+
+                        case sf::Keyboard::Key::Down:
+                            view.move({0.0f, -10.0f});
+                            window.setView(view);
+                            break;
+
+                        case sf::Keyboard::Key::Left:
+                            view.move({10.0f, 0.0f});
+                            window.setView(view);
+                            break;
+
+                        case sf::Keyboard::Key::Right:
+                            view.move({-10.0f, 0.0f});
+                            window.setView(view);
+                            break;
+
+                        default:
+                            break;
+                    }
+                    break;
+                }
+
+                case sf::Event::Resized:
+                {
+                    auto view = window.getView();
+                    
+                    float ratio = float(event.size.width) / float(event.size.height);
+
+                    view.setSize(g_ScreenWidth, g_ScreenWidth / ratio);
+                    window.setView(view);
+                    break;
+                }
 
                 default:
                     // Silence warnings re. unhandled cases
@@ -48,8 +97,10 @@ main(
             }
         }
 
+        solarSystem.TickAnimation();
+
         window.clear();
-        window.draw(spriteSun);
+        window.draw(solarSystem);
         window.display();
     }
 }
