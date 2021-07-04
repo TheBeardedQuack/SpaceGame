@@ -6,6 +6,7 @@ Space based tycoon RTS
 
 - planets have attributes e.g temp, orbit, Size (determines max population), Type (e.g Terrestrial, Habitable, Gas Giant)
 - building slots, also have attribute / specific resources
+- planets move in an approximation of orbits. "Shipping routes" can use brachistochrone tragectories as shortest route while maintaining illusion of orbits.
 - random generation systems + galaxy
 - Plantary settlers / tourists 
 - companies (produce goods, provide for pops.
