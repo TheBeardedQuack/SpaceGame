@@ -4,16 +4,19 @@ Space based tycoon RTS
 
 ## Ideas / Features
 
-- planets have attributes e.g temp, orbit, Size (determines max population), Type (e.g Terrestrial, Habitable, Gas Giant)
+- planets have attributes e.g temp, orbit, Size (determines max population), Type (e.g Terrestrial, Habitable, Gas Giant)can determine building/production modifiers.
 - building slots, also have attribute / specific resources
 - planets move in an approximation of orbits. "Shipping routes" can use brachistochrone tragectories as shortest route while maintaining illusion of orbits.
 - random generation systems + galaxy
 - Plantary settlers / tourists 
 - Mining plants, industrial planets, leisure worlds, city world.
+- a complex resource and logistics system; largely automated.
+- tycoon type gameplay; hybridised with some elements of 4x (e.g building stuff needs resources to be shipped via traderoutes)
 - as game expands low level functions become automatic.
-- companies (produce goods, provide for pops) providing some amount of automation.
+- companies (produce goods, ship goods to places they are needed, provide for pops) providing some amount of automation.
 - "Tiers" based on energy productions following Kardeshev scale.
-
+- gradually expanding field of view
+- classes of building; orbital and planetary.
 ### Resource Types
 
 - Energy (maintains infrastructure and populations - Goal is to increase production to reach "Tiers")
