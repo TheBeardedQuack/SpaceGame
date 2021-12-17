@@ -1,0 +1,46 @@
+[
+    {
+        "name": "Energy",
+        "image": "rsc/images/resources/energy.png"
+    },
+    {
+        "name": "Consumer Goods",
+        "image": "rsc/images/resources/goods.png"
+    },
+    {
+        "name": "Ores",
+        "image": "rsc/images/resources/ores.png"
+    },
+    {
+        "name": "Metals",
+        "image": "rsc/images/resources/metals.png"
+    },
+    {
+        "name": "Rare Elements",
+        "image": "rsc/images/resources/rare.png"
+    },
+    {
+        "name": "Chemicals",
+        "image": "rsc/images/resources/chemicals.png"
+    },
+    {
+        "name": "Volatiles",
+        "image": "rsc/images/resources/volatiles.png"
+    },
+    {
+        "name": "Life Support",
+        "image": "rsc/images/resources/lifesupport.png"
+    },
+    {
+        "name": "Concrete",
+        "image": "rsc/images/resources/concrete.png"
+    },
+    {
+        "name": "Regolith",
+        "image": "rsc/images/resources/regolith.png"
+    },
+    {
+        "name": "Helium-3",
+        "image": "rsc/images/resources/helium3.png"
+    }
+]
