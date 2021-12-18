@@ -24,9 +24,9 @@ jobs:
       uses: actions/cache@v1.0.3
       id: cache-sfml
       with:
-        path: "~/sfml"
+        path: sfml
         key: libsfml-dev
-    
+
     - name: Install sfml
       env:
         CACHE_HIT: ${{steps.cache-sfml.outputs.cache-hit}}
@@ -48,17 +48,25 @@ jobs:
         path: |
           sfml
 
-    - name: mkdir
+    - name: Install MinGW
+      uses: egor-tensin/setup-mingw@v2
+
+    - name: Set up MinGW
+      uses: egor-tensin/setup-mingw@v2
+      with:
+        platform: x86
+
+    - name: mkdir bin
       run: mkdir bin
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}/bin -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      run: cmake -B ${{github.workspace}}/bin -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=i686-w64-mingw32-g++
 
     - name: Build
       # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/bin --config ${{env.BUILD_TYPE}}
+      run: cmake --build ${{github.workspace}}/bin --config ${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=i686-w64-mingw32-g++
 
     - name: Store Artifacts
       uses: actions/upload-artifact@v2
