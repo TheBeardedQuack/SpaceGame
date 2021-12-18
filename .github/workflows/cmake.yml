@@ -54,7 +54,7 @@ jobs:
       run: cmake --build ${{github.workspace}}/bin --config ${{env.BUILD_TYPE}}
 
     - name: Store Artifacts
-      uses: actions/upload-artifacts@v2
+      uses: actions/upload-artifact@v2
       with:
         name: spacegame
         path: |
