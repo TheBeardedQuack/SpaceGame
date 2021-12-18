@@ -39,17 +39,15 @@ jobs:
           for dep in libsfml-dev; do
             dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
           done
-          for dep in libsfml-system; do
-            dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
-          done
-          for dep in libsfml-window; do
-            dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
-          done
-          for dep in libsfml-graphics; do
-            dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
-          done
         fi
     
+    - name: Store SFML
+      uses: actions/upload-artifact@v2
+      with:
+        name: sfml
+        path: |
+          sfml
+
     - name: mkdir
       run: mkdir bin
 
