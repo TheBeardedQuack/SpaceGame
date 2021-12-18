@@ -11,6 +11,10 @@ set(POSITION_INDEPENDENT_CODE OFF)
 
 find_package(SFML 2.5 COMPONENTS graphics system window REQUIRED)
 
+target_link_directories(SpaceGame
+    ../sfml
+)
+
 target_link_libraries(SpaceGame
     sfml-graphics
     sfml-system
