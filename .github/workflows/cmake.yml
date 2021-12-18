@@ -34,9 +34,18 @@ jobs:
         if [[ "$CACHE_HIT" == 'true' ]]; then
           sudo cp --force --recursive ~/sfml/* /
         else
-          sudo apt update && sudo apt install -yq libsfml-dev;
+          sudo apt update && sudo apt install -yq libsfml-dev libsfml-system libsfml-window libsfml-graphics;
           mkdir -p ~/sfml
           for dep in libsfml-dev; do
+            dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
+          done
+          for dep in libsfml-system; do
+            dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
+          done
+          for dep in libsfml-window; do
+            dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
+          done
+          for dep in libsfml-graphics; do
             dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
           done
         fi
