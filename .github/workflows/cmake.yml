@@ -30,7 +30,7 @@ jobs:
     - name: Install sfml
       env:
         CACHE_HIT: ${{steps.cache-sfml.outputs.cache-hit}}
-      run:
+      run: |
         if [[ "$CACHE_HIT" == 'true' ]]; then
           sudo cp --force --recursive ~/sfml/* /
         else
