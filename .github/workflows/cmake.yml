@@ -52,7 +52,7 @@ jobs:
     - name: Set up MinGW
       uses: egor-tensin/setup-mingw@v2
       with:
-        platform: x86
+        platform: x64
 
     - name: mkdir bin
       run: mkdir bin
@@ -60,11 +60,11 @@ jobs:
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-      run: cmake -B ${{github.workspace}}/bin -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=i686-w64-mingw32-g++
+      run: cmake -B ${{github.workspace}}/bin -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=x86_64-w64-mingw32-g++-win32
 
     - name: Build
       # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/bin --config ${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=i686-w64-mingw32-g++
+      run: cmake --build ${{github.workspace}}/bin --config ${{env.BUILD_TYPE}} -DCMAKE_CXX_COMPILER=x86_64-w64-mingw32-g++-win32
 
     - name: Store Artifacts
       uses: actions/upload-artifact@v2
