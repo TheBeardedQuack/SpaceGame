@@ -33,7 +33,7 @@ jobs:
       env:
         CACHE_HIT: ${{steps.cache-sfml.outputs.cache-hit}}
       run: |
-        sudo apt update && sudo apt install -yq libsfml-dev libsfml-system libsfml-window libsfml-graphics;
+        sudo apt update && sudo apt install -yq libsfml-dev;
         mkdir -p ~/sfml
         for dep in libsfml-dev; do
           dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
