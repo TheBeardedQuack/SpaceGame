@@ -42,7 +42,7 @@ jobs:
             dpkg -L $dep | while IFS= read -r f; do if test -f $f; then echo $f; fi; done | xargs cp --parents --target-directory ~/sfml/
           done
 #        fi
-    
+
     - name: Store SFML
       uses: actions/upload-artifact@v2
       with:
