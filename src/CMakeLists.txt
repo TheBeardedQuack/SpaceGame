@@ -2,10 +2,11 @@ configure_file(SpaceGame.hpp.in SpaceGame.hpp)
 add_executable(SpaceGame
     SpaceGame.cpp
     SolarSystem.cpp
+    Transform.cpp
 )
 
 set(CMAKE_BUILD_TYPE "debug" CACHE STRING "Build mode <debug|release>")
-set(CMAKE_CXX_STANDARD 17 CACHE STRING "C++ Language Standard")
+set(CMAKE_CXX_STANDARD 20 CACHE STRING "C++ Language Standard")
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(POSITION_INDEPENDENT_CODE OFF)
 
