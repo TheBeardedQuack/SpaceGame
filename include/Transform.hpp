@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Component.hpp"
+#include "ComponentBase.hpp"
 
 class Transform :
-    public Component<Transform>
+    public ComponentBase<Transform>
 {
 private:
     Transform();
